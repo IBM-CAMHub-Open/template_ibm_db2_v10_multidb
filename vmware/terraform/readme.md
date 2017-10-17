@@ -34,7 +34,7 @@ IBM DB2 Enterprise Server Edition V10.5<br>
 <br>
 ### Default Virtual Machine Settings
 
- vCPU 2, Memory (GB)<br>
+ vCPU 2, Memory (GB) 8<br>
 <br>
 ### Usage and Special Notes
 
