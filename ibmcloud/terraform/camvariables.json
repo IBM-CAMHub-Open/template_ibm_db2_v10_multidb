@@ -12,10 +12,6 @@
       "label": "Cloud Input Variables"
     },
     {
-      "name": "virtualmachine",
-      "label": "Virtual Machine Input Variables"
-    },
-    {
       "name": "ssh_keys",
       "label": "SSH Keys"
     },
@@ -28,8 +24,8 @@
       "label": "Environment"
     },
     {
-      "name": "ungrouped",
-      "label": "ungrouped"
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
     }
   ],
   "output_groups": [
@@ -80,10 +76,10 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_fcm_port",
+      "name": "DB2Node01_db2_instances_instance2_fcm_port",
       "type": "string",
       "description": "The port for the DB2 Fast Communications Manager (FCM).",
-      "default": "60000",
+      "default": "60100",
       "hidden": true,
       "label": "DB2 FCM port - DB2Node01",
       "secured": false,
@@ -95,10 +91,10 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_fcm_port",
+      "name": "DB2Node01_db2_instances_instance1_fcm_port",
       "type": "string",
       "description": "The port for the DB2 Fast Communications Manager (FCM).",
-      "default": "60100",
+      "default": "60000",
       "hidden": true,
       "label": "DB2 FCM port - DB2Node01",
       "secured": false,
@@ -187,6 +183,42 @@
       "group_name": "db2node01"
     },
     {
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_db_collate",
+      "type": "string",
+      "description": "Collate determines ordering for a set of characters.",
+      "default": "SYSTEM",
+      "hidden": false,
+      "label": "DB2 collate - DB2Node01",
+      "secured": false,
+      "options": [
+        {
+          "value": "SYSTEM",
+          "label": "SYSTEM",
+          "default": true
+        },
+        {
+          "value": "NLSCHAR",
+          "label": "NLSCHAR"
+        },
+        {
+          "value": "COMPATIBILITY",
+          "label": "COMPATIBILITY"
+        },
+        {
+          "value": "IDENTITY",
+          "label": "IDENTITY"
+        },
+        {
+          "value": "IDENTITY_16BIT",
+          "label": "IDENTITY_16BIT"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
       "name": "DB2Node01_db2_instances_instance1_databases_database2_db_collate",
       "type": "string",
       "description": "Collate determines ordering for a set of characters.",
@@ -224,42 +256,6 @@
     },
     {
       "name": "DB2Node01_db2_instances_instance2_databases_database1_db_collate",
-      "type": "string",
-      "description": "Collate determines ordering for a set of characters.",
-      "default": "SYSTEM",
-      "hidden": false,
-      "label": "DB2 collate - DB2Node01",
-      "secured": false,
-      "options": [
-        {
-          "value": "SYSTEM",
-          "label": "SYSTEM",
-          "default": true
-        },
-        {
-          "value": "NLSCHAR",
-          "label": "NLSCHAR"
-        },
-        {
-          "value": "COMPATIBILITY",
-          "label": "COMPATIBILITY"
-        },
-        {
-          "value": "IDENTITY",
-          "label": "IDENTITY"
-        },
-        {
-          "value": "IDENTITY_16BIT",
-          "label": "IDENTITY_16BIT"
-        }
-      ],
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_db_collate",
       "type": "string",
       "description": "Collate determines ordering for a set of characters.",
       "default": "SYSTEM",
@@ -370,6 +366,21 @@
       "group_name": "db2node01"
     },
     {
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_update_NEWLOGPATH",
+      "type": "string",
+      "description": "The path to be used for database logging.",
+      "default": "default",
+      "hidden": true,
+      "label": "DB2 database log path - DB2Node01",
+      "secured": false,
+      "regex": "^(default|\\/[ -~]*)$",
+      "regexdesc": "Allow default or a string that starts with slash.",
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
       "name": "DB2Node01_db2_instances_instance1_databases_database2_database_update_NEWLOGPATH",
       "type": "string",
       "description": "The path to be used for database logging.",
@@ -386,21 +397,6 @@
     },
     {
       "name": "DB2Node01_db2_instances_instance1_databases_database1_database_update_NEWLOGPATH",
-      "type": "string",
-      "description": "The path to be used for database logging.",
-      "default": "default",
-      "hidden": true,
-      "label": "DB2 database log path - DB2Node01",
-      "secured": false,
-      "regex": "^(default|\\/[ -~]*)$",
-      "regexdesc": "Allow default or a string that starts with slash.",
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_update_NEWLOGPATH",
       "type": "string",
       "description": "The path to be used for database logging.",
       "default": "default",
@@ -460,6 +456,21 @@
       "group_name": "db2node01"
     },
     {
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_db_path",
+      "type": "string",
+      "description": "Specifies the DB2 database path.",
+      "default": "/data/db11",
+      "hidden": false,
+      "label": "DB2 database path - DB2Node01",
+      "secured": false,
+      "regex": "^/[ -~]*$",
+      "regexdesc": "Allow a string that starts with slash.",
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
       "name": "DB2Node01_db2_instances_instance2_databases_database1_db_path",
       "type": "string",
       "description": "Specifies the DB2 database path.",
@@ -490,22 +501,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_db_path",
-      "type": "string",
-      "description": "Specifies the DB2 database path.",
-      "default": "/data/db11",
-      "hidden": false,
-      "label": "DB2 database path - DB2Node01",
-      "secured": false,
-      "regex": "^/[ -~]*$",
-      "regexdesc": "Allow a string that starts with slash.",
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_users_db_user1_ldap_user",
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_ldap_user",
       "type": "string",
       "description": "This parameter indicates whether the database user is stored in LDAP. If the value set to true, the user is not created on the operating system.",
       "default": "false",
@@ -529,7 +525,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_ldap_user",
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_users_db_user1_ldap_user",
       "type": "string",
       "description": "This parameter indicates whether the database user is stored in LDAP. If the value set to true, the user is not created on the operating system.",
       "default": "false",
@@ -577,7 +573,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_user_access",
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_users_db_user1_user_access",
       "type": "string",
       "description": "The database access granted to the user. Example: DBADM WITH DATAACCESS WITHOUT ACCESSCTRL",
       "default": "none",
@@ -625,7 +621,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_users_db_user1_user_access",
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_user_access",
       "type": "string",
       "description": "The database access granted to the user. Example: DBADM WITH DATAACCESS WITHOUT ACCESSCTRL",
       "default": "none",
@@ -736,21 +732,6 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_users_db_user1_user_gid",
-      "type": "string",
-      "description": "Specifies the name of the operating system group for database users.",
-      "default": "dbgroup1",
-      "hidden": false,
-      "label": "DB2 database user group name - DB2Node01",
-      "secured": false,
-      "regex": "^(?(?=(users|admins|guests|public|local))((users|local)[0-9a-z_]{1,27}|(admins|guests|public)[0-9a-z_]{1,26})|(?!(ibm|sys|sql))[a-z_][0-9a-z_]{0,31})$",
-      "regexdesc": "Allow 1 to 32 lower-case letters, digits and _(underscore) for names (1) not same as users, admins, guests, public, local and any SQL reserved words; (2) not starting with digits and special words as ibm, sys, and sql.",
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
       "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_user_gid",
       "type": "string",
       "description": "Specifies the name of the operating system group for database users.",
@@ -766,7 +747,22 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_users_db_user1_user_home",
+      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_users_db_user1_user_gid",
+      "type": "string",
+      "description": "Specifies the name of the operating system group for database users.",
+      "default": "dbgroup1",
+      "hidden": false,
+      "label": "DB2 database user group name - DB2Node01",
+      "secured": false,
+      "regex": "^(?(?=(users|admins|guests|public|local))((users|local)[0-9a-z_]{1,27}|(admins|guests|public)[0-9a-z_]{1,26})|(?!(ibm|sys|sql))[a-z_][0-9a-z_]{0,31})$",
+      "regexdesc": "Allow 1 to 32 lower-case letters, digits and _(underscore) for names (1) not same as users, admins, guests, public, local and any SQL reserved words; (2) not starting with digits and special words as ibm, sys, and sql.",
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_user_home",
       "type": "string",
       "description": "The DB2 database user home directory.",
       "default": "default",
@@ -792,7 +788,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_user_home",
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_users_db_user1_user_home",
       "type": "string",
       "description": "The DB2 database user home directory.",
       "default": "default",
@@ -850,7 +846,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_users_db_user1_user_password",
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_user_password",
       "type": "string",
       "description": "The password for the database user name.",
       "hidden": false,
@@ -878,7 +874,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_users_db_user1_user_password",
+      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_users_db_user1_user_password",
       "type": "string",
       "description": "The password for the database user name.",
       "hidden": false,
@@ -907,7 +903,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_update_FAILARCHPATH",
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_update_FAILARCHPATH",
       "type": "string",
       "description": "The path to be used for archiving log files.",
       "default": "default",
@@ -922,7 +918,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_update_FAILARCHPATH",
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_update_FAILARCHPATH",
       "type": "string",
       "description": "The path to be used for archiving log files.",
       "default": "default",
@@ -967,20 +963,6 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_fenced_password",
-      "type": "string",
-      "description": "The password for the DB2 fenced username.",
-      "hidden": false,
-      "label": "DB2 fenced user password - DB2Node01",
-      "secured": true,
-      "regex": "^[!-~]{8,32}$",
-      "regexdesc": "Allow 8 to 32 printable ASCII characters except space.",
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
       "name": "DB2Node01_db2_instances_instance2_fenced_password",
       "type": "string",
       "description": "The password for the DB2 fenced username.",
@@ -995,10 +977,24 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_fenced_username",
+      "name": "DB2Node01_db2_instances_instance1_fenced_password",
+      "type": "string",
+      "description": "The password for the DB2 fenced username.",
+      "hidden": false,
+      "label": "DB2 fenced user password - DB2Node01",
+      "secured": true,
+      "regex": "^[!-~]{8,32}$",
+      "regexdesc": "Allow 8 to 32 printable ASCII characters except space.",
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
+      "name": "DB2Node01_db2_instances_instance2_fenced_username",
       "type": "string",
       "description": "The fenced user is used to run user defined functions and stored procedures outside of the address space used by the DB2 database.",
-      "default": "db2fenc1",
+      "default": "db2fenc2",
       "hidden": false,
       "label": "DB2 fenced username - DB2Node01",
       "secured": false,
@@ -1010,10 +1006,10 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_fenced_username",
+      "name": "DB2Node01_db2_instances_instance1_fenced_username",
       "type": "string",
       "description": "The fenced user is used to run user defined functions and stored procedures outside of the address space used by the DB2 database.",
-      "default": "db2fenc2",
+      "default": "db2fenc1",
       "hidden": false,
       "label": "DB2 fenced username - DB2Node01",
       "secured": false,
@@ -1051,10 +1047,10 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_instance_dir",
+      "name": "DB2Node01_db2_instances_instance1_instance_dir",
       "type": "string",
       "description": "The DB2 instance directory stores all information that pertains to a database instance.",
-      "default": "/instances/db2inst2",
+      "default": "/instances/db2inst1",
       "hidden": false,
       "label": "DB2 instance directory - DB2Node01",
       "secured": false,
@@ -1066,10 +1062,10 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_instance_dir",
+      "name": "DB2Node01_db2_instances_instance2_instance_dir",
       "type": "string",
       "description": "The DB2 instance directory stores all information that pertains to a database instance.",
-      "default": "/instances/db2inst1",
+      "default": "/instances/db2inst2",
       "hidden": false,
       "label": "DB2 instance directory - DB2Node01",
       "secured": false,
@@ -1241,6 +1237,21 @@
       "group_name": "db2node01"
     },
     {
+      "name": "DB2Node01_db2_instances_instance1_instance_username",
+      "type": "string",
+      "description": "The DB2 instance username controls all DB2 processes and owns all filesystems and devices.",
+      "default": "db2inst1",
+      "hidden": false,
+      "label": "DB2 instance username - DB2Node01",
+      "secured": false,
+      "regex": "^(?(?=(users|admins|guests|public|local))((users|local)[0-9a-z_]{1,3}|(admins|guests|public)[0-9a-z_]{1,2})|(?!(ibm|sys|sql|dbm))[a-z_][0-9a-z_]{0,7})$",
+      "regexdesc": "Allow 1 to 8 lower-case letters, digits and _(underscore) for names (1) not same as users, admins, guests, public, local and any SQL reserved words; (2) not starting with digits and special words as ibm, sys, sql and dbm.",
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
       "name": "DB2Node01_db2_instances_instance2_instance_username",
       "type": "string",
       "description": "The DB2 instance username controls all DB2 processes and owns all filesystems and devices.",
@@ -1256,15 +1267,15 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_instance_username",
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_update_LOGFILSIZ",
       "type": "string",
-      "description": "The DB2 instance username controls all DB2 processes and owns all filesystems and devices.",
-      "default": "db2inst1",
-      "hidden": false,
-      "label": "DB2 instance username - DB2Node01",
+      "description": "Specifies the size of log files.",
+      "default": "default",
+      "hidden": true,
+      "label": "DB2 log file size - DB2Node01",
       "secured": false,
-      "regex": "^(?(?=(users|admins|guests|public|local))((users|local)[0-9a-z_]{1,3}|(admins|guests|public)[0-9a-z_]{1,2})|(?!(ibm|sys|sql|dbm))[a-z_][0-9a-z_]{0,7})$",
-      "regexdesc": "Allow 1 to 8 lower-case letters, digits and _(underscore) for names (1) not same as users, admins, guests, public, local and any SQL reserved words; (2) not starting with digits and special words as ibm, sys, sql and dbm.",
+      "regex": "^([4-9]|[1-9][0-9]{1,6}|1[0-5][0-9]{6}|16[0-6][0-9]{5}|167[0-6][0-9]{4}|1677[0-6][0-9]{3}|167770[0-9]{2}|167771[0-4][0-9]|1677715[0-2]|default)$",
+      "regexdesc": "Allow a number between 4 and 16777152 or using default.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
@@ -1301,22 +1312,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_update_LOGFILSIZ",
-      "type": "string",
-      "description": "Specifies the size of log files.",
-      "default": "default",
-      "hidden": true,
-      "label": "DB2 log file size - DB2Node01",
-      "secured": false,
-      "regex": "^([4-9]|[1-9][0-9]{1,6}|1[0-5][0-9]{6}|16[0-6][0-9]{5}|167[0-6][0-9]{4}|1677[0-6][0-9]{3}|167770[0-9]{2}|167771[0-4][0-9]|1677715[0-2]|default)$",
-      "regexdesc": "Allow a number between 4 and 16777152 or using default.",
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_db2_instances_instance1_databases_database2_pagesize",
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_pagesize",
       "type": "string",
       "description": "Specifies the page size in bytes.",
       "default": "4096",
@@ -1380,7 +1376,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_pagesize",
+      "name": "DB2Node01_db2_instances_instance1_databases_database2_pagesize",
       "type": "string",
       "description": "Specifies the page size in bytes.",
       "default": "4096",
@@ -1412,7 +1408,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_update_LOGARCHMETH1",
+      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_update_LOGARCHMETH1",
       "type": "string",
       "description": "Specifies the media type of the primary destination for logs that are archived.",
       "default": "default",
@@ -1500,7 +1496,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_update_LOGARCHMETH1",
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_database_update_LOGARCHMETH1",
       "type": "string",
       "description": "Specifies the media type of the primary destination for logs that are archived.",
       "default": "default",
@@ -1544,7 +1540,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_update_LOGSECOND",
+      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_update_LOGSECOND",
       "type": "string",
       "description": "Specifies the number of secondary log files that are created and used for recovery log files.",
       "default": "default",
@@ -1559,7 +1555,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database2_database_update_LOGSECOND",
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_database_update_LOGSECOND",
       "type": "string",
       "description": "Specifies the number of secondary log files that are created and used for recovery log files.",
       "default": "default",
@@ -1589,7 +1585,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance2_databases_database1_territory",
+      "name": "DB2Node01_db2_instances_instance1_databases_database1_territory",
       "type": "string",
       "description": "Territory is used by the database manager when processing data that is territory sensitive.",
       "default": "US",
@@ -1604,7 +1600,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_db2_instances_instance1_databases_database1_territory",
+      "name": "DB2Node01_db2_instances_instance2_databases_database1_territory",
       "type": "string",
       "description": "Territory is used by the database manager when processing data that is territory sensitive.",
       "default": "US",
@@ -1628,178 +1624,6 @@
       "secured": false,
       "regex": "^[A-Z]{2}$|^Lat$",
       "regexdesc": "Allow two upper-case letters and a special case (Lat) as defined in https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.nls.doc/doc/r0004565.html.",
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_disk1_size",
-      "type": "string",
-      "description": "Disk1 - DB2Node01",
-      "default": "100",
-      "hidden": false,
-      "label": "Disk1 - DB2Node01",
-      "secured": false,
-      "options": [
-        {
-          "value": "10",
-          "label": "10 GB"
-        },
-        {
-          "value": "20",
-          "label": "20 GB"
-        },
-        {
-          "value": "25",
-          "label": "25 GB"
-        },
-        {
-          "value": "50",
-          "label": "50 GB"
-        },
-        {
-          "value": "75",
-          "label": "75 GB"
-        },
-        {
-          "value": "100",
-          "label": "100 GB",
-          "default": true
-        },
-        {
-          "value": "125",
-          "label": "125 GB"
-        },
-        {
-          "value": "150",
-          "label": "150 GB"
-        },
-        {
-          "value": "200",
-          "label": "200 GB"
-        },
-        {
-          "value": "250",
-          "label": "250 GB"
-        },
-        {
-          "value": "300",
-          "label": "300 GB"
-        },
-        {
-          "value": "350",
-          "label": "350 GB"
-        },
-        {
-          "value": "400",
-          "label": "400 GB"
-        },
-        {
-          "value": "500",
-          "label": "500 GB"
-        },
-        {
-          "value": "750",
-          "label": "750 GB"
-        },
-        {
-          "value": "1000",
-          "label": "1.0 TB"
-        },
-        {
-          "value": "1500",
-          "label": "1.5 TB"
-        },
-        {
-          "value": "2000",
-          "label": "2.0 TB"
-        }
-      ],
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "ibm_pm_access_token",
-      "type": "string",
-      "description": "IBM Pattern Manager Access Token",
-      "hidden": true,
-      "label": "IBM Pattern Manager Access Token",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
-    },
-    {
-      "name": "ibm_pm_service",
-      "type": "string",
-      "description": "IBM Pattern Manager Service",
-      "hidden": true,
-      "label": "IBM Pattern Manager Service",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
-    },
-    {
-      "name": "ibm_sw_repo_password",
-      "type": "string",
-      "description": "IBM Software Repo Password",
-      "hidden": true,
-      "label": "IBM Software Repo Password",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
-    },
-    {
-      "name": "ibm_sw_repo",
-      "type": "string",
-      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
-      "hidden": true,
-      "label": "IBM Software Repo Root",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
-    },
-    {
-      "name": "ibm_sw_repo_user",
-      "type": "string",
-      "description": "IBM Software Repo Username",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
-      "hidden": true,
-      "label": "IBM Software Repo Username",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment"
-    },
-    {
-      "name": "DB2Node01_local_disk",
-      "type": "string",
-      "description": "User local disk or SAN disk",
-      "default": "false",
-      "hidden": false,
-      "label": "IBMCloud - Local / SAN Disk - DB2Node01",
-      "secured": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "True"
-        },
-        {
-          "value": "false",
-          "label": "False",
-          "default": "true"
-        }
-      ],
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
@@ -1942,8 +1766,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01_dedicated_acct_host_only",
@@ -1966,8 +1789,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01_hourly_billing",
@@ -1990,8 +1812,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01_network_speed",
@@ -2014,8 +1835,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01_private_network_only",
@@ -2038,14 +1858,13 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01_memory",
       "type": "string",
       "description": "Amount of Memory (MBs), which is required to be one or more times of 1024",
-      "default": 8192,
+      "default": 4096,
       "hidden": false,
       "label": "IBMCloud VSI Memory - DB2Node01",
       "secured": false,
@@ -2082,8 +1901,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01_number_of_cores",
@@ -2126,8 +1944,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01-image",
@@ -2163,18 +1980,17 @@
       "options": [
         {
           "value": "25",
-          "label": "25 GB",
-          "default": true
+          "label": "25 GB"
         },
         {
           "value": "100",
-          "label": "100 GB"
+          "label": "100 GB",
+          "default": true
         }
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "cloud"
     },
     {
       "name": "DB2Node01-name",
@@ -2185,64 +2001,15 @@
       "secured": false,
       "required": true,
       "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "DB2Node01-mgmt-network-public",
-      "type": "string",
-      "description": "Expose and use public IP of virtual machine for internal communication",
-      "default": "true",
-      "hidden": false,
-      "label": "Use Public Management Network - DB2Node01",
-      "secured": false,
-      "options": [
-        {
-          "value": false,
-          "label": false
-        },
-        {
-          "value": true,
-          "label": true
-        }
-      ],
-      "required": true,
-      "immutable": false,
       "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "virtualmachine"
     },
     {
       "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_device",
       "type": "string",
       "description": "Name of the physical device, eg, /dev/xdba. Leave assign a free device based on size",
-      "default": "/dev/sdz",
       "hidden": false,
       "label": "device - DB2Node01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume4_filesystem",
-      "type": "string",
-      "description": "The stsandard filesystem type.",
-      "default": "ext4",
-      "hidden": false,
-      "label": "filesystem - DB2Node01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_filesystem",
-      "type": "string",
-      "description": "The stsandard filesystem type.",
-      "default": "ext4",
-      "hidden": false,
-      "label": "filesystem - DB2Node01",
       "secured": false,
       "required": true,
       "immutable": false,
@@ -2263,7 +2030,33 @@
       "group_name": "db2node01"
     },
     {
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume4_filesystem",
+      "type": "string",
+      "description": "The stsandard filesystem type.",
+      "default": "ext4",
+      "hidden": false,
+      "label": "filesystem - DB2Node01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
       "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume2_filesystem",
+      "type": "string",
+      "description": "The stsandard filesystem type.",
+      "default": "ext4",
+      "hidden": false,
+      "label": "filesystem - DB2Node01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_filesystem",
       "type": "string",
       "description": "The stsandard filesystem type.",
       "default": "ext4",
@@ -2302,19 +2095,6 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume2_lv_name",
-      "type": "string",
-      "description": "Name of the logical volume.",
-      "default": "db11",
-      "hidden": false,
-      "label": "lv_name - DB2Node01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
       "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume1_lv_name",
       "type": "string",
       "description": "Name of the logical volume.",
@@ -2328,12 +2108,12 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume1_lv_size",
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume2_lv_name",
       "type": "string",
-      "description": "Size of the filesystem, use standard lvm file size format",
-      "default": "19G",
+      "description": "Name of the logical volume.",
+      "default": "db11",
       "hidden": false,
-      "label": "lv_size - DB2Node01",
+      "label": "lv_name - DB2Node01",
       "secured": false,
       "required": true,
       "immutable": false,
@@ -2341,10 +2121,10 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_lv_size",
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume2_lv_size",
       "type": "string",
       "description": "Size of the filesystem, use standard lvm file size format",
-      "default": "20G",
+      "default": "40G",
       "hidden": false,
       "label": "lv_size - DB2Node01",
       "secured": false,
@@ -2367,12 +2147,51 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume2_lv_size",
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_lv_size",
       "type": "string",
       "description": "Size of the filesystem, use standard lvm file size format",
-      "default": "40G",
+      "default": "20G",
       "hidden": false,
       "label": "lv_size - DB2Node01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume1_lv_size",
+      "type": "string",
+      "description": "Size of the filesystem, use standard lvm file size format",
+      "default": "19G",
+      "hidden": false,
+      "label": "lv_size - DB2Node01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume1_mountpoint",
+      "type": "string",
+      "description": "Mount Point of the file system attached to the Logical Volume",
+      "default": "/instances",
+      "hidden": false,
+      "label": "mountpoint - DB2Node01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2node01"
+    },
+    {
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_mountpoint",
+      "type": "string",
+      "description": "Mount Point of the file system attached to the Logical Volume",
+      "default": "/data/db12",
+      "hidden": false,
+      "label": "mountpoint - DB2Node01",
       "secured": false,
       "required": true,
       "immutable": false,
@@ -2406,33 +2225,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_mountpoint",
-      "type": "string",
-      "description": "Mount Point of the file system attached to the Logical Volume",
-      "default": "/data/db12",
-      "hidden": false,
-      "label": "mountpoint - DB2Node01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume1_mountpoint",
-      "type": "string",
-      "description": "Mount Point of the file system attached to the Logical Volume",
-      "default": "/instances",
-      "hidden": false,
-      "label": "mountpoint - DB2Node01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
-    },
-    {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume4_options",
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_options",
       "type": "string",
       "description": "Name of the logical volume.",
       "default": "rw",
@@ -2458,7 +2251,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume3_options",
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume2_options",
       "type": "string",
       "description": "Name of the logical volume.",
       "default": "rw",
@@ -2471,7 +2264,7 @@
       "group_name": "db2node01"
     },
     {
-      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume2_options",
+      "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume4_options",
       "type": "string",
       "description": "Name of the logical volume.",
       "default": "rw",
@@ -2510,6 +2303,176 @@
       "group_name": "db2node01"
     },
     {
+      "name": "DB2Node01_disk1_size",
+      "type": "string",
+      "description": "Disk1 - DB2Node01 Size",
+      "default": "100",
+      "hidden": false,
+      "label": "Disk1 - DB2Node01 Size",
+      "secured": false,
+      "options": [
+        {
+          "value": "10",
+          "label": "10 GB"
+        },
+        {
+          "value": "20",
+          "label": "20 GB"
+        },
+        {
+          "value": "25",
+          "label": "25 GB"
+        },
+        {
+          "value": "50",
+          "label": "50 GB"
+        },
+        {
+          "value": "75",
+          "label": "75 GB"
+        },
+        {
+          "value": "100",
+          "label": "100 GB",
+          "default": true
+        },
+        {
+          "value": "125",
+          "label": "125 GB"
+        },
+        {
+          "value": "150",
+          "label": "150 GB"
+        },
+        {
+          "value": "200",
+          "label": "200 GB"
+        },
+        {
+          "value": "250",
+          "label": "250 GB"
+        },
+        {
+          "value": "300",
+          "label": "300 GB"
+        },
+        {
+          "value": "350",
+          "label": "350 GB"
+        },
+        {
+          "value": "400",
+          "label": "400 GB"
+        },
+        {
+          "value": "500",
+          "label": "500 GB"
+        },
+        {
+          "value": "750",
+          "label": "750 GB"
+        },
+        {
+          "value": "1000",
+          "label": "1.0 TB"
+        },
+        {
+          "value": "1500",
+          "label": "1.5 TB"
+        },
+        {
+          "value": "2000",
+          "label": "2.0 TB"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "ibm_pm_access_token",
+      "type": "string",
+      "description": "IBM Pattern Manager Access Token",
+      "hidden": true,
+      "label": "IBM Pattern Manager Access Token",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
+    },
+    {
+      "name": "ibm_pm_service",
+      "type": "string",
+      "description": "IBM Pattern Manager Service",
+      "hidden": true,
+      "label": "IBM Pattern Manager Service",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
+    },
+    {
+      "name": "ibm_sw_repo_password",
+      "type": "string",
+      "description": "IBM Software Repo Password",
+      "hidden": true,
+      "label": "IBM Software Repo Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
+    },
+    {
+      "name": "ibm_sw_repo",
+      "type": "string",
+      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
+      "hidden": true,
+      "label": "IBM Software Repo Root",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
+    },
+    {
+      "name": "ibm_sw_repo_user",
+      "type": "string",
+      "description": "IBM Software Repo Username",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Repo Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "DB2Node01_local_disk",
+      "type": "string",
+      "description": "User local disk or SAN disk",
+      "default": "false",
+      "hidden": false,
+      "label": "IBMCloud - Local / SAN Disk - DB2Node01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "True"
+        },
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
       "name": "ibm_pm_private_ssh_key",
       "type": "string",
       "description": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
@@ -2534,6 +2497,28 @@
       "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key_name}"
     },
     {
+      "name": "DB2Node01-mgmt-network-public",
+      "type": "string",
+      "description": "Expose and use public IP of virtual machine for internal communication",
+      "default": "true",
+      "hidden": false,
+      "label": "Use Public Management Network",
+      "secured": false,
+      "options": [
+        {
+          "value": false,
+          "label": false
+        },
+        {
+          "value": true,
+          "label": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
       "name": "user_public_ssh_key",
       "type": "string",
       "description": "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH.",
@@ -2543,6 +2528,7 @@
       "secured": false,
       "required": true,
       "immutable": false,
+      "immutable_after_create": true,
       "group_name": "ssh_keys"
     },
     {

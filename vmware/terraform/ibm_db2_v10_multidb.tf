@@ -58,7 +58,6 @@ variable "ibm_stack_name" {
   description = "A unique stack name."
 }
 
-#### Default OS Admin User Map ####
 
 ##### DB2Node01 variables #####
 #Variable : DB2Node01-image
@@ -642,7 +641,6 @@ variable "DB2Node01_db2_instances_instance2_port" {
 variable "DB2Node01_linux_physicalvolumes_physicalvolume1_device" {
   type = "string"
   description = "Name of the physical device, eg, /dev/xdba. Leave assign a free device based on size"
-  default = "/dev/sdz"
 }
 
 #Variable : DB2Node01_linux_physicalvolumes_physicalvolume1_logicalvolumes_logicalvolume1_filesystem
@@ -833,6 +831,10 @@ variable "ibm_sw_repo_user" {
 }
 
 
+##### virtualmachine variables #####
+
+##### ungrouped variables #####
+
 #########################################################
 ##### Resource : DB2Node01
 #########################################################
@@ -856,12 +858,12 @@ variable "DB2Node01_domain" {
 
 variable "DB2Node01_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
-  default = "2"
+  default = "4"
 }
 
 variable "DB2Node01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default = "2048"
+  default = "8192"
 }
 
 variable "DB2Node01_cluster" {

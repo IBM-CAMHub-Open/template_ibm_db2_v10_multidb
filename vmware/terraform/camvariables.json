@@ -12,10 +12,6 @@
       "label": "Cloud Input Variables"
     },
     {
-      "name": "virtualmachine",
-      "label": "Virtual Machine Input Variables"
-    },
-    {
       "name": "ssh_keys",
       "label": "SSH Keys"
     },
@@ -26,6 +22,10 @@
     {
       "name": "environment",
       "label": "Environment"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
     }
   ],
   "output_groups": [
@@ -1723,8 +1723,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "virtualmachine"
     },
     {
       "name": "storage-volume_disk_datastore",
@@ -1758,8 +1757,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "virtualmachine"
     },
     {
       "name": "storage-volume_disk_name",
@@ -1771,8 +1769,7 @@
       "secured": false,
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "virtualmachine"
     },
     {
       "name": "storage-volume_disk_size",
@@ -1811,8 +1808,7 @@
       ],
       "required": true,
       "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "db2node01"
+      "group_name": "virtualmachine"
     },
     {
       "name": "DB2Node01_domain",
@@ -2080,7 +2076,7 @@
       "name": "DB2Node01_number_of_vcpu",
       "type": "string",
       "description": "Number of virtual CPU for the virtual machine, which is required to be a positive Integer",
-      "default": 2,
+      "default": 4,
       "hidden": false,
       "label": "Virtual Machine vCPUs - DB2Node01",
       "secured": false,
@@ -2103,7 +2099,6 @@
       "name": "DB2Node01_linux_physicalvolumes_physicalvolume1_device",
       "type": "string",
       "description": "Name of the physical device, eg, /dev/xdba. Leave assign a free device based on size",
-      "default": "/dev/sdz",
       "hidden": false,
       "label": "device - DB2Node01",
       "secured": false,
@@ -2464,6 +2459,7 @@
       "secured": false,
       "required": true,
       "immutable": false,
+      "immutable_after_create": true,
       "group_name": "ssh_keys"
     }
   ],

@@ -13,7 +13,7 @@ This template deploys IBM DB2 Enterprise Server Edition V10.5 on a Linux virtual
 <br>
 ### Template Version
 
-1.0<br>
+1.0.2<br>
 <br>
 ### Operating Systems Supported
 
